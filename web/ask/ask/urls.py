@@ -23,7 +23,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from qa import views
 
+
+
+urlpatterns = [
+    path('', views.test, name='/'),
+    path('login/', views.test, name='login'),
+    path('signup/', views.test, name='signup'),
+    path('question/<int:id>/', views.test, name='question'),
+    path('ask/', views.test, name='ask'),
+    path('popular/', views.test, name='popular'),
+    path('new/', views.test, name='new'),
+]
+'''
 urlpatterns = [
     url (r'^$', include ('qa.urls') ),
     url (r'^login/', include ('qa.urls') ),
@@ -32,4 +45,4 @@ urlpatterns = [
     url (r'^ask/', include ('qa.urls')),
     url (r'^popular/', include ('qa.urls')),
     url (r'^new/', include ('qa.urls') ),
-]
+]'''
