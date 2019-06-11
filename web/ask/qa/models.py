@@ -11,16 +11,7 @@ class Question(models.Model):
     objects = QuestionManager()
 class QuestionManager(Question.Manager):
     def popular(self):
-        from django.db import connection
-        cursor = connection.cursor()
-        cursor.execute('''
-        SELECT text FROM Question 
-        ORDER BY rating DESC;
-        ''')
-        result_list = []
-        for row in cursor.fetchall():
-            result_list.append(row)
-        return result_list
+        return self.order_by('-rating')
     def new(self):
         return self.order_by('-added_at')
 
